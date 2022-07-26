@@ -10,9 +10,9 @@ res = requests.get(url, headers=headers)
 res.raise_for_status()
 soup = BeautifulSoup(res.text, "html.parser")
 
-items = soup.find_all("div", attrs={"class":"wrap_cont cont_type2"})
+items = soup.find_all("div", attrs={"class":"wrap_cont cont_type2"})[:5]
 
-for item in items[:5]:
+for item in items:
     title = item.find("a", attrs={"class":"tit_main"}).get_text()
     rate = item.find("em", attrs={"class":"rate"}).get_text()
     rate = float(rate)
